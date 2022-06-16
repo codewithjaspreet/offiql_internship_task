@@ -1,6 +1,11 @@
 # offiql_internship_task
 
-A new Flutter project.
+                                                      // got till here - >
+                                                      
+                                                      
+![Screenshot_20220616-180750](https://user-images.githubusercontent.com/85099922/174071848-810246d6-15ed-4407-a452-3a8f3d3c2c40.jpg)
+
+
 
 ## Getting Started
 
