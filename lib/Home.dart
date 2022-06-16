@@ -8,11 +8,165 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        toolbarHeight: 190,
+        toolbarHeight: 150,
         backgroundColor: Colors.transparent,
         flexibleSpace: TopAppBar(),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Next Match',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: const <BoxShadow>[
+                    BoxShadow(
+                        color: Colors.black54,
+                        blurRadius: 4.0,
+                        offset: Offset(0.0, 1.5))
+                  ],
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color(0xffD3D3D3),
+                      Colors.white,
+                    ],
+                    stops: [3 / 6, 2 / 6],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                height: 130,
+                width: 400,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        children: [
+                          const CircleAvatar(
+                            backgroundColor: Colors.red,
+                          ),
+                          const CircleAvatar(
+                            backgroundColor: Colors.green,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: const [
+                                Text(
+                                  'Red Devils',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 4,
+                                ),
+                                Text(
+                                  'vs',
+                                  style: TextStyle(
+                                      color: Colors.green, fontSize: 8),
+                                ),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  'V. Greens',
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 30,
+                                ),
+                                Icon(
+                                  Icons.more_vert,
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(13.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                Icons.calendar_month_outlined,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text('9 May 2021'),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text('10:45'),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.account_balance_wallet,
+                                    color: Colors.black,
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text('Champions League'),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
+  }
+}
+
+class CardMiddle extends StatelessWidget {
+  const CardMiddle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
 

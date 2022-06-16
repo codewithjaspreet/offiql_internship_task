@@ -8,8 +8,8 @@ class TopAppBar extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20)),
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40)),
           gradient: LinearGradient(
               colors: [Colors.green, Colors.white],
               begin: Alignment.bottomCenter,
@@ -44,16 +44,16 @@ class TopAppBar extends StatelessWidget {
                 children: const <Widget>[
                   Icon(
                     size: 30,
-                    Icons.notifications,
-                    color: Colors.white54,
+                    Icons.notifications_active_outlined,
+                    color: Colors.black,
                   ),
                   SizedBox(
                     width: 25,
                   ),
                   Icon(
-                    Icons.add_a_photo,
+                    Icons.menu,
                     size: 30,
-                    color: Colors.white54,
+                    color: Colors.black,
                   ),
                 ],
               ),
