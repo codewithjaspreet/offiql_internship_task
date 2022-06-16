@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offiql_internship_task/Home.dart';
+import 'package:offiql_internship_task/elements/BottomNavigationBar.dart';
+import 'package:offiql_internship_task/elements/NewsCard.dart';
+import 'package:offiql_internship_task/elements/NewsMatchCard.dart';
 import 'Widgets/TopAppBar.dart';
+import 'Widgets/midButton.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -50,35 +55,106 @@ class Home extends StatelessWidget {
                 child: const NextMatchCard(),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Column(
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'News',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 200, // Constrain height.
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
+                  children: <Widget>[
+                    SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          NewsCard(),
-                          NewsCard(),
+                          const Text(
+                            'News',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 200, // Constrain height.
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              children: [
+                                NewsCard(),
+                                NewsCard(),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
+                    Column(
+                      children: [
+                        Center(
+                          child: Container(
+                              height: 199,
+                              // ignore this, cos I am giving height to the container
+                              width:
+                                  317, // ignore this, cos I am giving width to the container
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage('assets/stadium.jpg'))),
+                              alignment: Alignment
+                                  .bottomCenter, // This aligns the child of the container
+                              child: Container(
+                                  alignment: Alignment.bottomCenter,
+                                  height: 100,
+                                  width: MediaQuery.of(context).size.width,
+                                  color: Colors.black45,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          height: 6,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3,
+                                          color: Colors.green,
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        const Text(
+                                            'The Record was reached with 90000 fans',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
+                                  ))),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        NavigationBarItem(msg: 'home', iconData: Icons.home),
+                        NavigationBarItem(
+                            msg: 'Calender',
+                            iconData: Icons.calendar_month_outlined),
+                        GlowingActionButton(
+                            color: Colors.green,
+                            icon: Icons.plus_one,
+                            onPressed: () {}),
+                        NavigationBarItem(msg: 'Shop', iconData: Icons.shop),
+                        NavigationBarItem(
+                            msg: 'Tickets', iconData: Icons.airplane_ticket),
+                      ],
+                    )
                   ],
-                )
-              ],
+                ),
+              ),
             )
           ],
         ),
@@ -86,248 +162,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-class NewsCard extends StatelessWidget {
-  @override
-  // NewsCard({required this.msg, required this.icon});
-
-  // final String msg;
-  // final AssetImage icon;
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20), color: Colors.white),
-        width: 200.0,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Super Liga',
-                style: TextStyle(color: Colors.black),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text('Sun , 08 May', style: TextStyle(color: Colors.grey)),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      'assets/shield.png',
-                    ),
-                    Image.asset('assets/football-flag.png'),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    '4',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Text('-',
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  Text('1',
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class NextMatchCard extends StatelessWidget {
-  const NextMatchCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              const CircleAvatar(
-                backgroundColor: Colors.red,
-              ),
-              const CircleAvatar(
-                backgroundColor: Colors.green,
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      'Red Devils',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      'vs',
-                      style: TextStyle(color: Colors.green, fontSize: 8),
-                    ),
-                    SizedBox(
-                      width: 2,
-                    ),
-                    Text(
-                      'V. Greens',
-                      style: TextStyle(
-                          color: Colors.green, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 30,
-                    ),
-                    Icon(
-                      Icons.more_vert,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(13.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(
-                    Icons.calendar_month_outlined,
-                    color: Colors.black,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('9 May 2021'),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text('10:45'),
-                    ],
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.account_balance_wallet,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text('Champions League'),
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-        )
-      ],
-    );
-  }
-}
-
-// class BottomNavigationBar extends StatelessWidget {
-//   const BottomNavigationBar({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       child: Padding(
-//         padding: EdgeInsets.only(top: 16, left: 8, right: 8),
-//         child: Row(
-//           children: <Widget>[
-//             NavigationBarItem(
-//               iconData: CupertinoIcons.bubble_left_bubble_right_fill,
-//               msg: 'messaging',
-//             ),
-//             NavigationBarItem(
-//               iconData: CupertinoIcons.bubble_left_bubble_right_fill,
-//               msg: 'messaging',
-//             ),
-//             NavigationBarItem(
-//               iconData: CupertinoIcons.bubble_left_bubble_right_fill,
-//               msg: 'messaging',
-//             ),
-//             NavigationBarItem(
-//               iconData: CupertinoIcons.bubble_left_bubble_right_fill,
-//               msg: 'messaging',
-//             ),
-//             NavigationBarItem(
-//               iconData: CupertinoIcons.bubble_left_bubble_right_fill,
-//               msg: 'messaging',
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class NavigationBarItem extends StatelessWidget {
-//   const NavigationBarItem({Key? key, required this.msg, required this.iconData})
-//       : super(key: key);
-//   final String msg;
-//   final IconData iconData;
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       width: 70,
-//       child: Column(
-//         mainAxisSize: MainAxisSize.min,
-//         children: [
-//           Icon(
-//             iconData,
-//             size: 20,
-//             color: Colors.white,
-//           ),
-//           SizedBox(
-//             height: 8,
-//           ),
-//           Text(
-//             msg,
-//             style: TextStyle(
-//               fontSize: 11,
-//               fontWeight: FontWeight.bold,
-//               color: Colors.white,
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
